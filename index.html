@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reproductor Interactivo</title>
+  <style>
+    body {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    button {
+      background: none;
+      border: none;
+      font-size: 60px;
+      color: #E07A5F; /* terracota */
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <button id="btn">►</button>
+  <audio id="audio" src="AQUI_TU_ENLACE_DE_VOCAROO_O_MP3"></audio>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const audio = document.getElementById('audio');
+    let playing = false;
+
+    btn.addEventListener('click', () => {
+      if (!playing) {
+        audio.play();
+        btn.textContent = '❚❚'; // Pausa
+        playing = true;
+      } else {
+        audio.pause();
+        btn.textContent = '►'; // Play
+        playing = false;
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      btn.textContent = '►';
+      playing = false;
+    });
+  </script>
+</body>
+</html>
